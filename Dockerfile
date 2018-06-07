@@ -1,12 +1,9 @@
 
 FROM alpine:latest
 
-ENV CONFIG_JSON1={\"log\":{\"access\":\"\",\"error\":\"\",\"loglevel\":\"error\"},\"inbound\":{\"protocol\":\"vmess\",\"port\": 
-ENV CONFIG_JSON2=,\"settings\":{\"clients\":[{\"id\":\" 
-ENV CONFIG_JSON3=\",\"alterId\":64}]},\"streamSettings\":{\"network\":\"ws\",\"wsSettings\":{\"path\":\"
-ENV CONFIG_JSON4=\",\"connectionReuse\":true}}},\"inboundDetour\":[],\"outbound\":{\"protocol\":\"freedom\",\"settings\":{}},\"transport\":{\"tcpSettings\":{\"connectionReuse\":true},\"wsSettings\":{\"connectionReuse\":true},\"tlsSettings\":{\"allowInsecure\":true}}}
-
+RUN mkdir -m 777 /file
 ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh 
+RUN chmod +x /entrypoint.sh
+ADD config.zip /file/config.zip
 
 CMD /entrypoint.sh

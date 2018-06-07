@@ -1,50 +1,26 @@
 {
   "name": "V2ray",
-  "description": "deploy V2ray to Heroku.",
+  "description": "Deploy V2Ray to Heroku.",
   "keywords": ["V2ray"],
   "env": {
-    "V2RAY_VER": {
-       "description": "输入v2ray Core 版本",
-       "value": "3.22"
-     },
+    "VER": {
+       "description": "默认latest安装最新版本V2Ray （输入V2Ray 版本号 进行指定版本安装。例如：3.22)",
+       "value": "latest"
+     }, 
     "UUID": {
        "description": "Vmess协议默认UUID，请输入自己的UUID",
-       "value": "8fd6dadc-0d59-4ae7-93bb-e6b8a231c2c2"
+       "value": "4890bd47-5180-4b1c-9a5d-3ef686543112"
+     },
+     "V2_PATH": {
+       "description": "PATH路径，默认/FreeApp",
+       "value": "/FreeApp"
      },
     "V2RAY_RAY_BUFFER_SIZE": {
-       "description": "每个连接的缓存大小，单位MB",
-       "value": "6"
-     },
-    "CADDY_VER": {
-       "description": "输入caddy 版本",
-       "value": "0.11.0"
-     },
-    "CADDY_ROOT": {
-       "description": "配置caddy 网站root路径",
-       "value": "/mytestweb"
-     },
-    "CADDY_INDEX": {
-       "description": "配置caddy index文件",
-       "value": "index.html"
-     },
-    "CADDY_LS_IP": {
-       "description": "配置caddy 监听的ip 保持默认值",
-       "value": "0.0.0.0"
-     },
-    "V2_WS_PATH": {
-       "description": "输入v2ray ws 的 path",
-       "value": "/mytestws"
-     },
-    "V2_WS_IP": {
-       "description": "输入v2ray ws 监听的地址 保持默认值",
-       "value": "127.0.0.1"
-     },
-    "V2_WS_PORT": {
-       "description": "输入v2ray ws 监听的端口",
-       "value": "12345"
+       "description": "每个连接的缓存大小，单位MB，默认10。如果感觉有断流现象，请考虑将缓存改成1",
+       "value": "10"
      }
   },
-  "website": "https://github.com/zusrt/v2ray-heroku",
-  "repository": "https://github.com/zusrt/v2ray-heroku",
+  "website": "https://github.com/ki8852/v2ray-heroku",
+  "repository": "https://github.com/ki8852/v2ray-heroku",
   "stack": "container"
  }

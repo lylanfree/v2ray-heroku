@@ -10,12 +10,12 @@
   },
   "inboundDetour": [
   {
-    "port": 1080,
+    "port": 1082,
     "protocol": "socks",
     "listen": "127.0.0.1",
     "settings": {
       "auth": "noauth",
-      "udp": false,
+      "udp": true,
       "ip": "127.0.0.1"
     }
   }
@@ -25,13 +25,13 @@
     "settings": {
       "vnext": [
       {
-         "address": "herokuapp_IP  or cn_sniproxy_ip",  
+         "address": "xxxx.herokuapp.com", //填写自己的heroku应用名称
          "port": 443, 
          "users": [
          {
-           "id": "your UUID",
-           "alterId": 64,
-           "security": "none"
+           "id": "4890bd47-5180-4b1c-9a5d-3ef686543112", //如果自定义了UUID，请填写自己的
+           "alterId": 10,
+           "security": "aes-128-gcm"
          }
          ]
      }
@@ -41,19 +41,16 @@
      "network": "ws",
      "security": "tls",
      "tlsSettings": {
-       "serverName": "windows.com or herokuapp.com",
+       "serverName": "herokuapp.com",
        "allowInsecure": true
       },
      "wsSettings": {
-       "path": "",
-       "headers": {
-          "Host": "your_app_name.herokuapp.com"
-       }
+       "path": "/FreeApp" //V2_PATH路径，默认/FreeApp。如有修改，请填入修改后的
      }
   },
   "mux": {
     "enabled": true,
-    "concurrency": 8
+    "concurrency": 16
   }
 },
 "outboundDetour": [
