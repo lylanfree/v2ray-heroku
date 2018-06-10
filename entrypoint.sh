@@ -9,45 +9,33 @@ else
 fi
 
 #下载v2ray core
-if [ ! -d "/v2raybin/" ]; then
-  mkdir /v2raybin
-  cd /v2raybin
-  wget --no-check-certificate -qO 'v2ray.zip' https://github.com/v2ray/v2ray-core/releases/download/$VER_1/v2ray-linux-64.zip
-  unzip v2ray.zip
-  mv /v2raybin/v2ray-$VER_1-linux-64/v2ray /v2raybin/
-  mv /v2raybin/v2ray-$VER_1-linux-64/v2ctl /v2raybin/
-  mv /v2raybin/v2ray-$VER_1-linux-64/geoip.dat /v2raybin/
-  mv /v2raybin/v2ray-$VER_1-linux-64/geosite.dat /v2raybin/
-  chmod +x v2ray
-  chmod +x v2ctl
-  rm -rf v2ray-$VER_1-linux-64
-  rm -rf v2ray.zip
-else
-  echo "v2ray已经安装"
-fi
+mkdir /v2raybin
+cd /v2raybin
+wget --no-check-certificate -qO 'v2ray.zip' https://github.com/v2ray/v2ray-core/releases/download/$VER_1/v2ray-linux-64.zip
+unzip v2ray.zip
+cd /v2raybin/v2ray-$VER_1-linux-64
+chmod +x v2ray
+chmod +x v2ctl
+rm -rf v2ray.zip
 
 #下载最新版caddy
 CADDY_TAG_URL="https://api.github.com/repos/mholt/caddy/releases/latest"
 CADDY_VER=`wget -qO- "$CADDY_TAG_URL" | grep 'tag_name' | cut -d\" -f4`
-
-if [ ! -d /caddybin/caddy_$CADDY_VER ]; then
-  rm -rf /caddybin
-  mkdir /caddybin
-  mkdir /caddybin/caddy_$CADDY_VER
-  cd /caddybin/caddy_$CADDY_VER
-  wget --no-check-certificate -qO 'caddy.tar.gz' https://github.com/mholt/caddy/releases/download/$CADDY_VER/caddy_$CADDY_VER'_linux_amd64.tar.gz'
-  tar xvf caddy.tar.gz
-  chmod +x caddy
-  rm -rf caddy.tar.gz
-  mkdir /wwwroot
-  cd /wwwroot
-  wget --no-check-certificate -qO 'demo.tar.gz' https://github.com/ki8852/v2ray-heroku/raw/master/demo.tar.gz
-  tar xvf demo.tar.gz
-  rm -rf demo.tar.gz
-fi
+mkdir /caddybin
+mkdir /caddybin/caddy_$CADDY_VER
+cd /caddybin/caddy_$CADDY_VER
+wget --no-check-certificate -qO 'caddy.tar.gz' https://github.com/mholt/caddy/releases/download/$CADDY_VER/caddy_$CADDY_VER'_linux_amd64.tar.gz'
+tar xvf caddy.tar.gz
+chmod +x caddy
+rm -rf caddy.tar.gz
+mkdir /wwwroot
+cd /wwwroot
+wget --no-check-certificate -qO 'demo.tar.gz' https://github.com/ki8852/v2ray-heroku/raw/master/demo.tar.gz
+tar xvf demo.tar.gz
+rm -rf demo.tar.gz
 
 #拼接v2ray配置并启动v2ray
-cd /v2raybin
+cd /v2raybin/v2ray-$VER_1-linux-64
 CONFIG_JSON1=$(cat /file/1.json)
 CONFIG_JSON2=$(cat /file/2.json)
 CONFIG_JSON3=$(cat /file/3.json)
