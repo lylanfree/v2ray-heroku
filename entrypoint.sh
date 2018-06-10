@@ -9,16 +9,21 @@ else
 fi
 
 #下载v2ray core
-if [ ! -d /v2raybin/v2ray-$VER_1-linux-64 ]; then
-  rm -rf /v2raybin
+if [ ! -d "/v2raybin/" ]; then
   mkdir /v2raybin
   cd /v2raybin
   wget --no-check-certificate -qO 'v2ray.zip' https://github.com/v2ray/v2ray-core/releases/download/$VER_1/v2ray-linux-64.zip
   unzip v2ray.zip
-  cd /v2raybin/v2ray-$VER_1-linux-64
+  mv /v2raybin/v2ray-$VER_1-linux-64/v2ray /v2raybin/
+  mv /v2raybin/v2ray-$VER_1-linux-64/v2ctl /v2raybin/
+  mv /v2raybin/v2ray-$VER_1-linux-64/geoip.dat /v2raybin/
+  mv /v2raybin/v2ray-$VER_1-linux-64/geosite.dat /v2raybin/
   chmod +x v2ray
   chmod +x v2ctl
+  rm -rf v2ray-$VER_1-linux-64
   rm -rf v2ray.zip
+else
+  echo "v2ray已经安装"
 fi
 
 #下载最新版caddy
@@ -42,7 +47,7 @@ if [ ! -d /caddybin/caddy_$CADDY_VER ]; then
 fi
 
 #拼接v2ray配置并启动v2ray
-cd /v2raybin/v2ray-$VER_1-linux-64
+cd /v2raybin
 CONFIG_JSON1=$(cat /file/1.json)
 CONFIG_JSON2=$(cat /file/2.json)
 CONFIG_JSON3=$(cat /file/3.json)
