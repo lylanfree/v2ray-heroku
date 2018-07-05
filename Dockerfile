@@ -1,7 +1,7 @@
 
 FROM alpine:latest
 
-RUN apk add -U tzdata curl ntpdate && \
+RUN apk add -U tzdata curl && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone
 
