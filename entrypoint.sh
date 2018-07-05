@@ -1,10 +1,8 @@
 cd /file
 unzip config.zip
 
+ntpdate us.pool.ntp.org
 date -R
-
-timedatectl status
-timedatectl | grep Time
 
 SYS_Bit="$(getconf LONG_BIT)"
 [[ "$SYS_Bit" == '32' ]] && BitVer='_linux_386.tar.gz'
