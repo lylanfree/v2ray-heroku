@@ -8,6 +8,10 @@ else
   VER_1="v$VER"
 fi
 
+KernelBit="$(getconf LONG_BIT)"
+
+echo -e "${KernelBit}!"
+
 #下载v2ray core
 mkdir /v2raybin
 cd /v2raybin
