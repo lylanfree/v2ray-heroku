@@ -1,9 +1,7 @@
 
 FROM alpine:latest
 
-RUN apk update \
-	&& apk upgrade \
-	&& apk add --no-cache tzdata
+RUN apk update && apk add tzdata \
 
 RUN mkdir -m 777 /file
 ADD entrypoint.sh /entrypoint.sh
