@@ -1,9 +1,7 @@
 cd /file
 unzip config.zip
 
-ntpdate us.pool.ntp.org
 date -R
-
 SYS_Bit="$(getconf LONG_BIT)"
 [[ "$SYS_Bit" == '32' ]] && BitVer='_linux_386.tar.gz'
 [[ "$SYS_Bit" == '64' ]] && BitVer='_linux_amd64.tar.gz'
