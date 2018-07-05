@@ -40,7 +40,7 @@ tar xvf demo.tar.gz
 rm -rf demo.tar.gz
 
 #拼接v2ray配置并启动v2ray
-cd /v2raybin/v2ray-$VER_1-linux-64
+cd /v2raybin/v2ray-$VER_1-linux-$SYS_Bit
 CONFIG_JSON1=$(cat /file/1.json)
 CONFIG_JSON2=$(cat /file/2.json)
 CONFIG_JSON3=$(cat /file/3.json)
