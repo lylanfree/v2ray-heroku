@@ -1,10 +1,10 @@
 
-FROM debian:latest
+FROM alpine:latest
 
-RUN apt update -y \
-    && apt upgrade -y \
-    && apt install -y wget ntpdate unzip
-    
+RUN apk update \
+	&& apk upgrade \
+	&& apk add --no-cache tzdata
+
 RUN mkdir -m 777 /file
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
