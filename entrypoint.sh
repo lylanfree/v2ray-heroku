@@ -5,7 +5,7 @@ date -R
 rm -rf /etc/localtime
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
-timedatectl
+timedatectl  status
 date -R
 
 SYS_Bit="$(getconf LONG_BIT)"
