@@ -2,12 +2,9 @@ cd /file
 unzip config.zip
 
 date -R
-#rm -rf /etc/localtime
-#ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-#echo "Asia/Shanghai" > /etc/timezone
+
 timedatectl status
 timedatectl | grep Time
-
 
 SYS_Bit="$(getconf LONG_BIT)"
 [[ "$SYS_Bit" == '32' ]] && BitVer='_linux_386.tar.gz'
