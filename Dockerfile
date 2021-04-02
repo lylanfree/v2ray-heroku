@@ -6,9 +6,9 @@ RUN apk add -U tzdata curl && \
     echo "Asia/Shanghai" > /etc/timezone
 
 RUN mkdir -m 777 /file \
- && mkdir -m 777 -p /v2raybin/v2ray-v$VER-linux-64/ \
+ && mkdir -m 777 -p /v2raybin/v2ray-v4.36.2-linux-64/ \
  && cd /v2raybin/v2ray-v$VER-linux-64/ \
- && curl -L -H "Cache-Control: no-cache" -o v2ray.zip https://github.com/v2fly/v2ray-core/releases/download/v$VER/v2ray-linux-64.zip \
+ && curl -L -H "Cache-Control: no-cache" -o v2ray.zip https://github.com/v2fly/v2ray-core/releases/download/v4.36.2/v2ray-linux-64.zip \
  && unzip v2ray.zip \
  && chmod +x /v2raybin/v2ray \
  && rm -rf v2ray.zip \
