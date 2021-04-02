@@ -7,7 +7,7 @@ SYS_Bit="$(getconf LONG_BIT)"
 [[ "$SYS_Bit" == '64' ]] && BitVer='_linux_amd64.tar.gz'
 
 if [ "$VER" = "latest" ]; then
-  V2_TAG_URL="https://api.github.com/repos/v2ray/v2ray-core/releases/latest"
+  V2_TAG_URL="https://api.github.com/repos/v2fly/v2ray-core/releases/latest"
   VER_1=`wget -qO- "$V2_TAG_URL" | grep 'tag_name' | cut -d\" -f4`
 else
   VER_1="v$VER"
@@ -16,20 +16,19 @@ fi
 #下载v2ray core
 mkdir /v2raybin
 cd /v2raybin
-wget --no-check-certificate -qO 'v2ray.zip' "https://github.com/v2ray/v2ray-core/releases/download/$VER_1/v2ray-linux-$SYS_Bit.zip"
+wget --no-check-certificate -qO 'v2ray.zip' "https://github.com/v2fly/v2ray-core/releases/download/$VER_1/v2ray-linux-$SYS_Bit.zip"
 unzip v2ray.zip
-cd /v2raybin/v2ray-$VER_1-linux-$SYS_Bit
 chmod +x v2ray
 chmod +x v2ctl
 rm -rf v2ray.zip
 
 #下载最新版caddy
-CADDY_TAG_URL="https://api.github.com/repos/mholt/caddy/releases/latest"
+CADDY_TAG_URL="https://api.github.com/repos/caddyserver/caddy/releases/latest"
 CADDY_VER=`wget -qO- "$CADDY_TAG_URL" | grep 'tag_name' | cut -d\" -f4`
 mkdir /caddybin
 mkdir /caddybin/caddy_$CADDY_VER
 cd /caddybin/caddy_$CADDY_VER
-wget --no-check-certificate -qO 'caddy.tar.gz' "https://github.com/mholt/caddy/releases/download/$CADDY_VER/caddy_$CADDY_VER$BitVer"
+wget --no-check-certificate -qO 'caddy.tar.gz' "https://github.com/caddyserver/caddy/releases/download/$CADDY_VER/caddy_$CADDY_VER$BitVer"
 tar xvf caddy.tar.gz
 chmod +x caddy
 rm -rf caddy.tar.gz
